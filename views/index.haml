@@ -28,6 +28,7 @@
       Посмотрите видео ниже и узнайте, что ожидает вас на вебинаре.
 
     .video-container
+      = erb :video
     .button.scroll-to-form
       Записаться на бесплатный вебинар
 
@@ -188,7 +189,19 @@
   .wrapper
     .title
       Вебинар пройдет
-      %span.yellow 25 июня в 20:00
+      %span.yellow
+        = Time.new.strftime('%d').to_i + 1
+        - case Time.new.strftime('%m').to_i
+          - when 6
+            июня
+          - when 7
+            июля
+          - when 8
+            августа
+          - when 9
+            сентября
+
+        в 20:00
       .subtitle
         Оставьте свои контактные данные, и на ваш email
         %br

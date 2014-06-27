@@ -1,0 +1,44 @@
+%section.gray
+  .wrapper
+    .title
+      Как быстро похудеть
+
+    %p.about-me
+      Здесь будет текст, который немного раскроет смысл вебинара и тот момент, что лучше
+      записаться на полную версию
+
+    .video-container
+      = erb :video
+    .button.scroll-to-form
+      Записаться на бесплатный вебинар
+
+
+
+%section.dark#order-form
+  .wrapper
+    .title
+      Запишитесь на живой семинар в Москве,
+      %br
+      который пройдет
+      %span.yellow
+        15 июля
+      .subtitle
+        Оставьте свои контактные данные, чтобы вам перезвонил
+        %br
+        наш менеджер и записал вас на семинар
+
+
+
+    .form-thank-you
+      .thank-you-text
+        .bolder.big Спасибо!
+        ссылка была выслана на указанный вами адрес
+
+    .form
+      %input{type: :text, name: 'name', placeholder: 'Ваше имя'}
+      %input{type: :text, name: 'phone', placeholder: 'Ваш телефон'}
+      .button#order-button Записаться на семинар
+
+
+    .copyright
+      Игумнов константин © 2014

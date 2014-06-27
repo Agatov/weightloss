@@ -34,7 +34,33 @@ class Application < Sinatra::Base
     haml :index
   end
 
+  get '/webinar' do
+    haml :webinar
+  end
+
   post '/orders.json' do
+
+    message = "#{params[:order][:name]}. #{params[:order][:phone]}. #{params[:order][:email]}"
+
+    #if params[:order][:message]
+    #  message += "\n\n"
+    #  message += "#{params[:order][:message]}"
+    #end
+
+    Pony.mail ({
+        to: 'abardacha@gmail.com',
+        subject: I18n.t('email.title', locale: 'ru'),
+        html_body: (haml :mail, layout: false),
+        via: :smtp,
+        via_options: {
+            address: 'smtp.gmail.com',
+            port: 587,
+            enable_starttls_auto: true,
+            user_name: 'abardacha@gmail.com',
+            password: 'fiolent149',
+            authentication: :plain
+        }
+    })
 
     content_type :json
     {status: :success}.to_json
