@@ -40,7 +40,7 @@ class Application < Sinatra::Base
 
   post '/orders.json' do
 
-    message = "#{params[:order][:name]}. #{params[:order][:phone]}. #{params[:order][:email]}"
+    #message = "#{params[:order][:name]}. #{params[:order][:phone]}. #{params[:order][:email]}"
 
     #if params[:order][:message]
     #  message += "\n\n"
@@ -48,7 +48,7 @@ class Application < Sinatra::Base
     #end
 
     Pony.mail ({
-        to: 'abardacha@gmail.com',
+        to: params[:order][:email],
         subject: I18n.t('email.title', locale: 'ru'),
         html_body: (haml :mail, layout: false),
         via: :smtp,
@@ -56,8 +56,8 @@ class Application < Sinatra::Base
             address: 'smtp.gmail.com',
             port: 587,
             enable_starttls_auto: true,
-            user_name: 'abardacha@gmail.com',
-            password: 'fiolent149',
+            user_name: 'enjoybody.mailer@gmail.com',
+            password: 'qwe123poi',
             authentication: :plain
         }
     })
